@@ -12,11 +12,12 @@ namespace AgHW4_1
         static string[] menuFoursItems = new string[7];
         static AgMenu menuMain = new AgMenu(menuMainItems);
         static AgMenu menuFours = new AgMenu(menuFoursItems);
+        static method[] methodsHW4 = new method[] { HomeWork4.DoTask1, HomeWork4.DoTask2,
+            HomeWork4.DoTask3, HomeWork4.DoTask4, HomeWork4.DoTask5, HomeWork4.DoTask6};
         static void Main(string[] args)
         {
             MenuInitialization();
-            //method[] methods = new method[] { Task1Part1, Task1Part2, Task1Part3, Task1Part4,
-            //    Task2, Task3, Task4, QuitFromConsole};
+            
             int selectedMenuItem;
             //AgMenu menuMain = new AgMenu(menuMainItems);
             
@@ -87,7 +88,7 @@ namespace AgHW4_1
             {
                 selectedMenuItem = menuFours.GetSelectedMenuItem();
                 Console.Clear();
-                //methods[selectedMenuItem]();
+                methodsHW4[selectedMenuItem]();
                 if (selectedMenuItem == menuFoursItems.Length - 1)
                     continue;
                 NextScreen();
