@@ -6,9 +6,11 @@ namespace AgHW4_1
     {
         string[] menuItems;
         int counter;
+        //internal enum EscapeStatus {Off, On}
         internal AgMenu(string[] menuItems) => this.menuItems = menuItems;
         internal int GetSelectedMenuItem()
         {
+            counter = 0;
             ConsoleKey key;
             do
             {

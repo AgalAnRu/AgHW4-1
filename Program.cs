@@ -13,16 +13,18 @@ namespace AgHW4_1
         static AgMenu menuMain = new AgMenu(menuMainItems);
         static AgMenu menuFours = new AgMenu(menuFoursItems);
         static method[] methodsHW4 = new method[] { HomeWork4.DoTask1, HomeWork4.DoTask2,
-            HomeWork4.DoTask3, HomeWork4.DoTask4, HomeWork4.DoTask5, HomeWork4.DoTask6};
+                                                    HomeWork4.DoTask3, HomeWork4.DoTask4,
+                                                    HomeWork4.DoTask5, HomeWork4.DoTask6,
+                                                    PreviousScreen};
         static void Main(string[] args)
         {
             MenuInitialization();
-            
-            int selectedMenuItem;
+
+            //int selectedMenuItem;
             //AgMenu menuMain = new AgMenu(menuMainItems);
-            
+
             ShowMainScreen();
-            
+
         }
         static void MenuInitialization()
         {
@@ -61,7 +63,7 @@ namespace AgHW4_1
                 default:
                     break;
             }
-            
+
         }
         static void ShowFirstScreen()
         {
@@ -98,6 +100,10 @@ namespace AgHW4_1
         static void QuitFromConsole()
         {
             //NextScreen();
+        }
+        static void PreviousScreen()
+        {
+            Console.Clear();
         }
         static void NextScreen()
         {
