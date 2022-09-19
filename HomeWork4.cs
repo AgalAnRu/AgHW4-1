@@ -63,8 +63,8 @@ namespace AgHW4_1
         internal static void DoTask2()
         {
             Console.WriteLine("Задача 2");
-            int sizeN = AgGetValueFromInput.GetInt32("N-размер матрицы", 1);
-            int sizeM = AgGetValueFromInput.GetInt32("M-размер матрицы", 1);
+            int sizeN = AgGetInput.GetInt32("N-размер матрицы", 1);
+            int sizeM = AgGetInput.GetInt32("M-размер матрицы", 1);
             int[,] matrix = new int[sizeN, sizeM];
             AgFillValues.ArrayRandomFill(matrix, 1, 20);
             Console.WriteLine($"Исходная матрица [{sizeN}x{sizeM}]: ");
@@ -75,7 +75,7 @@ namespace AgHW4_1
         internal static void DoTask3()
         {
             Console.WriteLine("Задача 3");
-            int vagonsTotal = AgGetValueFromInput.GetInt32("число вагонов", 0);
+            int vagonsTotal = AgGetInput.GetInt32("число вагонов", 0);
             int[] passangers = new int[vagonsTotal];
             int passangersTotal = 0;
             const int ROLL_LENGTH = 100;
@@ -83,15 +83,30 @@ namespace AgHW4_1
             double rollTotal;
             AgFillValues.ArrayRandomFill(passangers, 0, 36);
             //AgFillValues.ArrayPrintAll(passangers);
-            
+
             foreach (int passanger in passangers)
                 passangersTotal += passanger;
             rollTotal = passangersTotal * COMPLECT_LENGTH / ROLL_LENGTH;
-            Console.WriteLine($"Потребуется {rollTotal} рулонов ткани ");
+            Console.WriteLine($"Потребуется {rollTotal} рулонов ткани");
         }
         internal static void DoTask4()
         {
             Console.WriteLine("Задача 4");
+            int cellTotal = AgGetInput.GetInt32("количество ячеек в камере хранения", 1);
+            int numberFirstCellToClear = AgGetInput.GetInt32("номер ячейки, с которой начать очистку", 1);
+            double[] weightsCells = new double[cellTotal];
+            AgFillValues.ArrayRandomFill(weightsCells, 0.0, 10.0);
+            int count = 0;
+            double weightTotal = 0;
+            foreach (double weight in weightsCells)
+            {
+                count++;
+                if (count != numberFirstCellToClear)
+                    weightTotal += weight;
+                else
+                    count = 0;
+            }
+            Console.WriteLine($"Вес в ячейках после изъятия каждой {numberFirstCellToClear}-й ячейки стоставляет: {weightTotal} кг");
         }
         internal static void DoTask5()
         {
@@ -100,6 +115,50 @@ namespace AgHW4_1
         internal static void DoTask6()
         {
             Console.WriteLine("Задача 6");
+            int sizeN = AgGetInput.GetInt32("N-размер матрицы", 1);
+            int sizeM = AgGetInput.GetInt32("M-размер матрицы", 1);
+            int[,] matrix = new int[sizeN, sizeM];
+            int[] maxLineVolue = new int[sizeM];
+            int[] minColumnVolue = new int[sizeN];
+            AgFillValues.ArrayRandomFill(matrix, 1, 20);
+            AgFillValues.ArrayRandomFill(maxLineVolue, 1, 1);
+            AgFillValues.ArrayRandomFill(minColumnVolue, 20, 20);
+            for (int i = 0; i < sizeM; i++)
+            {
+                for (int j = 0; j < sizeN; j++)
+                {
+                    if (maxLineVolue[i] < matrix[j, i])
+                        maxLineVolue[i] = matrix[j, i];
+                    if (minColumnVolue[j] > matrix[j, i])
+                        minColumnVolue[j] = matrix[j, i];
+                }
+            }
+            Console.WriteLine("Минор по столбцам и мажор по строкам:");
+            PrintMatrixMinCMaxR(matrix, minColumnVolue, maxLineVolue);
+        }
+        private static void PrintMatrixMinCMaxR(int[,] matrix, int[] topLine, int[] leftColomn)
+        {
+            int nSize = matrix.GetLength(0);
+            int mSize = matrix.GetLength(1);
+            //Console.Write("  \t");
+            foreach (int minor in topLine)
+                Console.Write($"\t{minor}");
+            Console.WriteLine();
+            //Console.Write("\t");
+            foreach (int minor in topLine)
+                Console.Write($"\tmin");
+            Console.WriteLine();
+            int row = 0;
+            foreach (int major in leftColomn)
+            {
+                Console.Write($"{major} max ");
+                for (int n = 0; n < nSize; n++)
+                {
+                    Console.Write($"\t{matrix[n, row]}");
+                }
+                Console.WriteLine();
+                row++;
+            }
         }
         private static void PrintMirrorMatrix(int[,] matrix)
         {

@@ -106,17 +106,18 @@ namespace AgHW4_1
                 index++;
             } while (index < length);
         }
-        internal static void ArrayPrintMatrix(int[,] matrix)
+        internal static void ArrayPrintMatrix(int[,] matrix, string leftStr = "", string rightStr = "")
         {
             int nSize = matrix.GetLength(0);
             int mSize = matrix.GetLength(1);
             for (int m = 1; m <= mSize; m++)
             {
+                Console.Write(leftStr);
                 for (int n = 1; n <= nSize; n++)
                 {
                     Console.Write($"{matrix[n-1, m-1]}\t");
                 }
-                Console.WriteLine();
+                Console.WriteLine(rightStr);
             }
         }
         private static void GetLenthArray(int[] arrayOfLength, Array inArray)

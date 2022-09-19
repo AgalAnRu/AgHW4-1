@@ -1,7 +1,7 @@
 ﻿using System;
 namespace AgHW4_1
 {
-    internal static class AgGetValueFromInput
+    internal static class AgGetInput
     {
         internal static int GetInt32(string prompt = "", int minValue = Int32.MinValue, int maxValue = Int32.MaxValue)
         {
