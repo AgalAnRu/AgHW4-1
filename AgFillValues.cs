@@ -3,14 +3,14 @@ namespace AgHW4_1
 {
     internal class AgFillValues
     {
-        Random random = new Random();
-        int typeOfFill;
-        int minValueInt;
-        int maxValueInt;
-        double minValueDouble;
-        double maxValueDouble;
+        static Random random = new Random();
+        static int typeOfFill;
+        static int minValueInt;
+        static int maxValueInt;
+        static double minValueDouble;
+        static double maxValueDouble;
         //Для ряда целых чисел;
-        internal void ArrayRandomFill(Array inArray, int minValue, int maxValue)
+        internal static void ArrayRandomFill(Array inArray, int minValue, int maxValue)
         {
             typeOfFill = 1;
             minValueInt = minValue;
@@ -18,14 +18,14 @@ namespace AgHW4_1
             ArrayRandomFill(inArray);
         }
         //Для ряда дробных чисел;
-        internal void ArrayRandomFill(Array inArray, double minValue, double maxValue)
+        internal static void ArrayRandomFill(Array inArray, double minValue, double maxValue)
         {
             typeOfFill = 2;
             minValueDouble = minValue;
             maxValueDouble = maxValue;
             ArrayRandomFill(inArray);
         }
-        internal void ArrayRandomFill(Array inArray)
+        internal static void ArrayRandomFill(Array inArray)
         {
             int length = inArray.Length;
             int rank = inArray.Rank;
@@ -69,7 +69,7 @@ namespace AgHW4_1
                 index++;
             } while (index < length);
         }
-        internal void ArrayPrintAll(Array inArray)
+        internal static void ArrayPrintAll(Array inArray)
         {
             int length = inArray.Length;
             int rank = inArray.Rank;
@@ -106,7 +106,7 @@ namespace AgHW4_1
                 index++;
             } while (index < length);
         }
-        internal void ArrayPrintMatrix(int[,] matrix)
+        internal static void ArrayPrintMatrix(int[,] matrix)
         {
             int nSize = matrix.GetLength(0);
             int mSize = matrix.GetLength(1);
@@ -119,24 +119,24 @@ namespace AgHW4_1
                 Console.WriteLine();
             }
         }
-        private void GetLenthArray(int[] arrayOfLength, Array inArray)
+        private static void GetLenthArray(int[] arrayOfLength, Array inArray)
         {
             int rank = inArray.Rank;
             for (int i = 0; i < rank; i++)
                 arrayOfLength.SetValue(inArray.GetLength(i), i);
         }
-        private int FillValueInt()
+        private static int FillValueInt()
         {
             int value = random.Next(minValueInt, maxValueInt + 1);
             return value;
         }
-        private double FillValueDouble()
+        private static double FillValueDouble()
         {
             double perCent = random.NextDouble();
             double value = minValueDouble + (maxValueDouble - minValueDouble) * perCent;
             return value;
         }
-        private void PrintIndex(int[] index)
+        private static void PrintIndex(int[] index)
         {
             Console.Write("( ");
             for (int i = index.Length - 1; i >= 0; i--)
@@ -146,7 +146,7 @@ namespace AgHW4_1
             }
             Console.Write("\b\b)");
         }
-        internal Array ArrayCreatFromUser()
+        internal static Array ArrayCreatFromUser()
         {
             Array array;
             int rank = GetRankFromInput();
@@ -166,7 +166,7 @@ namespace AgHW4_1
             maxValueDouble = GetMaxDoubleFromInput(minValueDouble);
             return array;
         }
-        private int GetRankFromInput()
+        private static int GetRankFromInput()
         {
             string inputStr = string.Empty;
             while (true)
@@ -178,7 +178,7 @@ namespace AgHW4_1
                         return rank;
             }
         }
-        private int GetLengthFromInput(int i)
+        private static int GetLengthFromInput(int i)
         {
             string inputStr = string.Empty;
             while (true)
@@ -190,7 +190,7 @@ namespace AgHW4_1
                         return length;
             }
         }
-        private int GetTypeToFill()
+        private static int GetTypeToFill()
         {
             ConsoleKey key;
             while (true)
@@ -209,7 +209,7 @@ namespace AgHW4_1
                 }
             }
         }
-        private int GetMinIntFromInput()
+        private static int GetMinIntFromInput()
         {
             string inputStr = string.Empty;
             while (true)
@@ -220,7 +220,7 @@ namespace AgHW4_1
                     return minValue;
             }
         }
-        private int GetMaxIntFromInput(int minValue)
+        private static int GetMaxIntFromInput(int minValue)
         {
             string inputStr = string.Empty;
             while (true)
@@ -232,7 +232,7 @@ namespace AgHW4_1
                         return maxValue;
             }
         }
-        private double GetMinDoubleFromInput()
+        private static double GetMinDoubleFromInput()
         {
             string inputStr = string.Empty;
             while (true)
@@ -243,7 +243,7 @@ namespace AgHW4_1
                     return minValue;
             }
         }
-        private double GetMaxDoubleFromInput(double minValue)
+        private static double GetMaxDoubleFromInput(double minValue)
         {
             string inputStr = string.Empty;
             while (true)
