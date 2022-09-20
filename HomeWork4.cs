@@ -82,8 +82,6 @@ namespace AgHW4_1
             const double COMPLECT_LENGTH = 8;
             double rollTotal;
             AgFillValues.ArrayRandomFill(passangers, 0, 36);
-            //AgFillValues.ArrayPrintAll(passangers);
-
             foreach (int passanger in passangers)
                 passangersTotal += passanger;
             rollTotal = passangersTotal * COMPLECT_LENGTH / ROLL_LENGTH;
@@ -175,11 +173,9 @@ namespace AgHW4_1
         {
             int nSize = matrix.GetLength(0);
             int mSize = matrix.GetLength(1);
-            //Console.Write("  \t");
             foreach (int minor in topLine)
                 Console.Write($"\t{minor}");
             Console.WriteLine();
-            //Console.Write("\t");
             foreach (int minor in topLine)
                 Console.Write($"\tmin");
             Console.WriteLine();
