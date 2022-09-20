@@ -111,8 +111,41 @@ namespace AgHW4_1
         internal static void DoTask5()
         {
             Console.WriteLine("Задача 5");
+            int startTime = 9 * 60;
+            int endTime = 16 * 60 + 10;
+            int lessonsTotal = (endTime - startTime) / (45 + 10) + 1;
+            int[,] lessonStartEnd = new int[2, lessonsTotal];
+            for (int i = 0; i < lessonsTotal; i++)
+            {
+
+                lessonStartEnd[0, i] = (i > 0) ? lessonStartEnd[1, i - 1] + 10 : startTime;
+                lessonStartEnd[1, i] = lessonStartEnd[0, i] + 45;
+            }
             int usersTime = AgGetInput.GetTimeHHMM();
-            Console.WriteLine(usersTime);
+            if (usersTime < startTime)
+            {
+                Console.WriteLine($"Уроки ещё не начались");
+                return;
+            }
+            if (usersTime > endTime)
+            {
+                Console.WriteLine($"Уроки уже закончились");
+                return;
+            }
+            for (int i = 0; i < lessonsTotal; i++)
+            {
+                if (usersTime >= lessonStartEnd[0, i] && usersTime <= lessonStartEnd[1, i])
+                {
+                    Console.WriteLine($"Сейчас идёт {i + 1}-й урок");
+                    return;
+                }
+                if (usersTime < lessonStartEnd[1, i])
+                {
+                    Console.WriteLine($"Сейчас идёт {i}-я перемена");
+                    return;
+                }
+            }
+
         }
         internal static void DoTask6()
         {
