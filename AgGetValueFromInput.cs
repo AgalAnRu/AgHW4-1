@@ -19,6 +19,43 @@ namespace AgHW4_1
 
             }
         }
+        internal static int GetTimeHHMM()
+        {
+            string inputStr = string.Empty;
+            char inputChar = ' ';
+            int time = 0;
+            int digit = 0;
+            Console.WriteLine("Введите время в формате hh:mm");
+            digit = GetDigit(0, 2);
+            time = digit * 600;
+            Console.Write(digit);
+            if (digit == 2)
+                digit = GetDigit(0, 3);
+            else
+                digit = GetDigit();
+            time += digit * 60;
+            Console.Write($"{digit} : ");
+            digit = GetDigit(0, 5);
+            Console.Write(digit);
+            time += digit * 10;
+            digit = GetDigit();
+            Console.WriteLine(digit);
+            time += digit;
+            return time;
+        }
+        internal static int GetDigit(int minDigit = 0, int maxDigit = 9)
+        {
+            char inChar = '0';
+            int digit = 0;
+            while (true)
+            {
+                inChar = Console.ReadKey(true).KeyChar;
+                if (Char.IsDigit(inChar))
+                    digit = Convert.ToInt32(inChar) - 48;
+                if (digit >= minDigit && digit <= maxDigit)
+                    return digit;
+            }
+        }
     }
 }
 

@@ -111,6 +111,8 @@ namespace AgHW4_1
         internal static void DoTask5()
         {
             Console.WriteLine("Задача 5");
+            int usersTime = AgGetInput.GetTimeHHMM();
+            Console.WriteLine(usersTime);
         }
         internal static void DoTask6()
         {
