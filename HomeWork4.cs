@@ -44,17 +44,17 @@ namespace AgHW4_1
             int boltsTotal = 0;
             foreach (int bolt in numberBoltsInBox)
                 boltsTotal += bolt;
-            int boltsAverage = boltsTotal / boxTotal;
+            double boltsAverage = (double) boltsTotal / boxTotal;
             Console.WriteLine($"Среднее количество болтов: {boltsAverage}");
-            int boltDeference = 400;
+            double boltDifference = 400;
             count = 0;
             boxNumber = 1;
             foreach (int bolt in numberBoltsInBox)
             {
                 count++;
-                if (boltDeference > (Math.Abs(bolt - boltsAverage)))
+                if (boltDifference > (Math.Abs((double)bolt - boltsAverage)))
                 {
-                    boltDeference = (Math.Abs(bolt - boltsAverage));
+                    boltDifference = (Math.Abs((double)bolt - boltsAverage));
                     boxNumber = count;
                 }
             }
