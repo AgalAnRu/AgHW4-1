@@ -60,7 +60,6 @@ namespace AgHW4_1
                 Console.WriteLine($"Введите {prompt}");
                 Console.Write($"(Целое число от {minValue} до {maxValue}): ");
                 inputStr = Console.ReadLine();
-                inputStr = Console.ReadLine();
                 if (ushort.TryParse(inputStr, out ushort result))
                     return result;
             }
