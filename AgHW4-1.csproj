@@ -46,6 +46,7 @@
     <Compile Include="AgFillValues.cs" />
     <Compile Include="AgGetValueFromInput.cs" />
     <Compile Include="AgMenu.cs" />
+    <Compile Include="HomeWork3.cs" />
     <Compile Include="HomeWork4.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

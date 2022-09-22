@@ -7,12 +7,17 @@ namespace AgHW4_1
         static string promtPressAnyKey = "Нажмите любую клавишу для продолжения...";
         //private static GetInput getInput = new GetInput();
         private static Random rnd = new Random();
-        delegate void method();
+        delegate void methods();
         static string[] menuMainItems = new string[5];
+        static string[] menuThirdItems = new string[5];
         static string[] menuFoursItems = new string[7];
         static AgMenu menuMain = new AgMenu(menuMainItems);
+        static AgMenu menuThird = new AgMenu(menuThirdItems);
         static AgMenu menuFours = new AgMenu(menuFoursItems);
-        static method[] methodsHW4 = new method[] { HomeWork4.DoTask1, HomeWork4.DoTask2,
+        static methods[] methodsHW3 = new methods[] { HomeWork3.DoTask1, HomeWork3.DoTask2,
+                                                    HomeWork3.DoTask3, HomeWork3.DoTask4,
+                                                    PreviousScreen};
+        static methods[] methodsHW4 = new methods[] { HomeWork4.DoTask1, HomeWork4.DoTask2,
                                                     HomeWork4.DoTask3, HomeWork4.DoTask4,
                                                     HomeWork4.DoTask5, HomeWork4.DoTask6,
                                                     PreviousScreen};
@@ -34,6 +39,12 @@ namespace AgHW4_1
             menuMainItems[3] = "Урок 4";
             menuMainItems[4] = "Выход";
 
+            menuThirdItems[0] = "Задание 1";
+            menuThirdItems[1] = "Задание 2";
+            menuThirdItems[2] = "Задание 3";
+            menuThirdItems[3] = "Задание 4";
+            menuThirdItems[4] = "<<Возврат";
+
             menuFoursItems[0] = "Задание 1";
             menuFoursItems[1] = "Задание 2";
             menuFoursItems[2] = "Задание 3";
@@ -49,52 +60,46 @@ namespace AgHW4_1
             switch (selectedMenuItem)
             {
                 case 0:
-                    ShowFirstScreen();
+                    ShowUnderConstractionScreen();
                     break;
                 case 1:
-                    ShowSecondScreen();
+                    ShowUnderConstractionScreen();
                     break;
                 case 2:
-                    ShowThirdScreen();
+                    ShowSecondScreen(menuThird, menuThirdItems, methodsHW3);
                     break;
                 case 3:
-                    ShowFoursScreen();
+                    ShowSecondScreen(menuFours, menuFoursItems, methodsHW4);
                     break;
                 default:
                     break;
             }
 
         }
-        static void ShowFirstScreen()
+        static void ShowUnderConstractionScreen()
         {
             Console.WriteLine("Раздел в разработке (выберите другой пункт)");
             Console.ReadKey();
             ShowMainScreen();
         }
-        static void ShowSecondScreen()
-        {
-            Console.WriteLine("Раздел в разработке (выберите другой пункт)");
-            Console.ReadKey();
-            ShowMainScreen();
-        }
-        static void ShowThirdScreen()
-        {
-            Console.WriteLine("Раздел в разработке (выберите другой пункт)");
-            Console.ReadKey();
-            ShowMainScreen();
-        }
-        static void ShowFoursScreen()
+        static void ShowSecondScreen(AgMenu menu, Array item, methods[] method)
         {
             int selectedMenuItem = 0;
             do
             {
-                selectedMenuItem = menuFours.GetSelectedMenuItem();
+                selectedMenuItem = menu.GetSelectedMenuItem();
                 Console.Clear();
-                methodsHW4[selectedMenuItem]();
-                if (selectedMenuItem == menuFoursItems.Length - 1)
+                method[selectedMenuItem]();
+                if (selectedMenuItem == item.Length - 1)
                     continue;
                 NextScreen();
-            } while (selectedMenuItem != menuFoursItems.Length - 1);
+            } while (selectedMenuItem != item.Length - 1);
+            ShowMainScreen();
+        }
+        static void _ShowSecondScreen()
+        {
+            Console.WriteLine("Раздел в разработке (выберите другой пункт)");
+            Console.ReadKey();
             ShowMainScreen();
         }
         static void QuitFromConsole()

@@ -19,6 +19,52 @@ namespace AgHW4_1
 
             }
         }
+        internal static byte GetByte(string prompt = "", byte minValue = byte.MinValue, byte maxValue = byte.MaxValue)
+        {
+            string inputStr = string.Empty;
+            while (true)
+            {
+                Console.WriteLine($"Введите {prompt}");
+                Console.Write($"(Целое число от {minValue} до {maxValue}): ");
+                inputStr = Console.ReadLine();
+                if (byte.TryParse(inputStr, out byte value))
+                    if (value >= minValue && value <= maxValue)
+                    {
+                        return value;
+                    }
+
+            }
+        }
+        internal static short GetInt16(string prompt = "", short minValue = short.MinValue, short maxValue = short.MaxValue)
+        {
+            string inputStr = string.Empty;
+            while (true)
+            {
+                Console.WriteLine($"Введите {prompt}");
+                Console.Write($"(Целое число от {minValue} до {maxValue}): ");
+                inputStr = Console.ReadLine();
+                if (short.TryParse(inputStr, out short value))
+                    if (value >= minValue && value <= maxValue)
+                    {
+                        return value;
+                    }
+
+            }
+        }
+
+        internal static ushort GetUint16(string prompt = "", ushort minValue = ushort.MinValue, ushort maxValue = ushort.MaxValue)
+        {
+            string inputStr = string.Empty;
+            while (true)
+            {
+                Console.WriteLine($"Введите {prompt}");
+                Console.Write($"(Целое число от {minValue} до {maxValue}): ");
+                inputStr = Console.ReadLine();
+                inputStr = Console.ReadLine();
+                if (ushort.TryParse(inputStr, out ushort result))
+                    return result;
+            }
+        }
         internal static int GetTimeHHMM()
         {
             string inputStr = string.Empty;
