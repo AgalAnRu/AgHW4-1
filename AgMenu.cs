@@ -31,7 +31,7 @@ namespace AgHW4_1
                 }
                 Console.WriteLine("(Выберите пункт меню и нажмите Enter " +
                     "или нажмите Escape для выхода)");
-                key = Console.ReadKey().Key;
+                key = Console.ReadKey(true).Key;
                 if (key == ConsoleKey.DownArrow)
                 {
                     counter++;
