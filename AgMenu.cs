@@ -4,9 +4,15 @@ namespace AgHW4_1
 {
     internal class AgMenu
     {
+        enum AgMenuColor
+        {
+            BackgroundColor,
+            ForegroundColor
+        } 
+        private ConsoleColor AgMenuBackgroundColor;
+        private ConsoleColor AgMenuForegroundColor;
         string[] menuItems;
         int counter;
-        //internal enum EscapeStatus {Off, On}
         internal AgMenu(string[] menuItems) => this.menuItems = menuItems;
         internal int GetSelectedMenuItem()
         {
@@ -47,6 +53,9 @@ namespace AgHW4_1
         }
         private void DrawMenu(int counter)
         {
+
+            AgMenuBackgroundColor = Console.BackgroundColor;
+            AgMenuForegroundColor = Console.ForegroundColor;
             Console.Clear();
             for (int i = 0; i < menuItems.Length; i++)
             {
@@ -75,13 +84,13 @@ namespace AgHW4_1
         {
             if (setNegative)
             {
-                Console.BackgroundColor = ConsoleColor.Gray;
-                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = AgMenuForegroundColor;
+                Console.ForegroundColor = AgMenuBackgroundColor;
             }
             if (!setNegative)
             {
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = AgMenuBackgroundColor;
+                Console.ForegroundColor = AgMenuForegroundColor;
             }
         }
     }

@@ -23,11 +23,10 @@ namespace AgHW4_1
                                                     PreviousScreen};
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.Black; 
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Title = "VAST C# Learning";
             MenuInitialization();
-
-            //int selectedMenuItem;
-            //AgMenu menuMain = new AgMenu(menuMainItems);
-
             ShowMainScreen();
 
         }
@@ -78,6 +77,7 @@ namespace AgHW4_1
         }
         static void ShowUnderConstractionScreen()
         {
+            Console.Clear();
             Console.WriteLine("Раздел в разработке (выберите другой пункт)");
             Console.ReadKey();
             ShowMainScreen();
