@@ -12,6 +12,7 @@ namespace AgHW4_1
         {
             counter = 0;
             ConsoleKey key;
+            Console.CursorVisible = false;
             do
             {
                 Console.Clear();
@@ -45,6 +46,7 @@ namespace AgHW4_1
                         counter = menuItems.Length - 1;
                 }
             } while (key != ConsoleKey.Enter && key != ConsoleKey.Escape);
+            Console.CursorVisible = true;
             if (key == ConsoleKey.Escape)
                 counter = menuItems.Length - 1;
             return counter;
