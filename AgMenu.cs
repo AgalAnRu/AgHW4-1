@@ -4,22 +4,22 @@ namespace AgHW4_1
 {
     internal class AgMenu
     {
-        enum AgMenuColor
-        {
-            BackgroundColor,
-            ForegroundColor
-        } 
         private ConsoleColor AgMenuBackgroundColor;
         private ConsoleColor AgMenuForegroundColor;
         string[] menuItems;
+        int leftPosition = 0;
         int counter;
-        internal AgMenu(string[] menuItems) => this.menuItems = menuItems;
+        internal AgMenu(string[] menuItems, int leftPosition = 0)
+        {
+            this.menuItems = menuItems;
+            this.leftPosition = leftPosition;
+        }
         internal int GetSelectedMenuItem()
         {
-            counter = 0;
+            counter = menuItems.Length - 1;
             ConsoleKey key;
             Console.CursorVisible = false;
-            DrawMenu(counter);
+            DrawMenu();
             do
             {
                 key = Console.ReadKey(true).Key;
@@ -51,33 +51,30 @@ namespace AgHW4_1
                 counter = menuItems.Length - 1;
             return counter;
         }
-        private void DrawMenu(int counter)
+        private void DrawMenu()
         {
-
             AgMenuBackgroundColor = Console.BackgroundColor;
             AgMenuForegroundColor = Console.ForegroundColor;
             Console.Clear();
-            for (int i = 0; i < menuItems.Length; i++)
+            for (int i = 0; i < menuItems.Length - 1; i++)
             {
-                if (i != counter)
-                    Console.WriteLine(menuItems[i]);
-                if (i == counter)
-                {
-                    SetNegativeColor(true);
-                    Console.WriteLine(menuItems[i]);
-                    SetNegativeColor(false);
-                }
+                Console.SetCursorPosition(leftPosition, i);
+                Console.WriteLine(menuItems[i]);
             }
+            Console.SetCursorPosition(leftPosition, menuItems.Length - 1);
+            SetNegativeColor(true);
+            Console.WriteLine(menuItems[menuItems.Length - 1]);
+            SetNegativeColor(false);
             Console.WriteLine("(Выберите пункт меню и нажмите Enter " +
                 "или нажмите Escape для выхода)");
         }
         private void RedrawMenuItems(int itemSelected, int itemDeselected)
         {
-            Console.SetCursorPosition(0, itemSelected);
+            Console.SetCursorPosition(leftPosition, itemSelected);
             SetNegativeColor(true);
             Console.WriteLine(menuItems[itemSelected]);
             SetNegativeColor(false);
-            Console.SetCursorPosition(0, itemDeselected);
+            Console.SetCursorPosition(leftPosition, itemDeselected);
             Console.WriteLine(menuItems[itemDeselected]);
         }
         private void SetNegativeColor(bool setNegative = false)

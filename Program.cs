@@ -11,9 +11,9 @@ namespace AgHW4_1
         static string[] menuMainItems = new string[5];
         static string[] menuThirdItems = new string[5];
         static string[] menuFoursItems = new string[7];
-        static AgMenu menuMain = new AgMenu(menuMainItems);
-        static AgMenu menuThird = new AgMenu(menuThirdItems);
-        static AgMenu menuFours = new AgMenu(menuFoursItems);
+        static AgMenu menuMain = new AgMenu(menuMainItems, 5);
+        static AgMenu menuThird = new AgMenu(menuThirdItems, 5);
+        static AgMenu menuFours = new AgMenu(menuFoursItems, 5);
         static methods[] methodsHW3 = new methods[] { HomeWork3.DoTask1, HomeWork3.DoTask2,
                                                     HomeWork3.DoTask3, HomeWork3.DoTask4,
                                                     PreviousScreen};
@@ -24,7 +24,7 @@ namespace AgHW4_1
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Black; 
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Title = "VAST C# Learning";
             MenuInitialization();
             ShowMainScreen();
@@ -36,7 +36,7 @@ namespace AgHW4_1
             menuMainItems[1] = "Урок 2";
             menuMainItems[2] = "Урок 3";
             menuMainItems[3] = "Урок 4";
-            menuMainItems[4] = "Выход";
+            menuMainItems[4] = "<Выход";
 
             menuThirdItems[0] = "Задание 1";
             menuThirdItems[1] = "Задание 2";
