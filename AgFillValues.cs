@@ -3,16 +3,16 @@ namespace AgHW
 {
     internal class AgFillValues
     {
-        static Random random = new Random();
-        static int typeOfFill;
-        static int minValueInt;
-        static int maxValueInt;
-        static double minValueDouble;
-        static double maxValueDouble;
+        private readonly static Random random = new Random();
+        private static string typeOfFill;
+        private static int minValueInt;
+        private static int maxValueInt;
+        private static double minValueDouble;
+        private static double maxValueDouble;
         //Для ряда целых чисел;
         internal static void ArrayRandomFill(Array inArray, int minValue, int maxValue)
         {
-            typeOfFill = 1;
+            typeOfFill = "int";
             minValueInt = minValue;
             maxValueInt = maxValue;
             ArrayRandomFill(inArray);
@@ -20,12 +20,12 @@ namespace AgHW
         //Для ряда дробных чисел;
         internal static void ArrayRandomFill(Array inArray, double minValue, double maxValue)
         {
-            typeOfFill = 2;
+            typeOfFill = "double";
             minValueDouble = minValue;
             maxValueDouble = maxValue;
             ArrayRandomFill(inArray);
         }
-        internal static void ArrayRandomFill(Array inArray)
+        private static void ArrayRandomFill(Array inArray)
         {
             int length = inArray.Length;
             int rank = inArray.Rank;
@@ -39,12 +39,12 @@ namespace AgHW
             int colomn = 0;
             do
             {
-                if (typeOfFill == 1)
+                if (typeOfFill == "int")
                 {
                     valueInt = FillValueInt();
                     inArray.SetValue(valueInt, inArrayElementIndex);
                 }
-                else
+                if (typeOfFill == "double")
                 {
                     valueDouble = FillValueDouble();
                     inArray.SetValue(valueDouble, inArrayElementIndex);
@@ -73,7 +73,6 @@ namespace AgHW
         {
             int length = inArray.Length;
             int rank = inArray.Rank;
-            //Console.WriteLine($"Lenght = {length}, Rank = {rank}");
             int[] inArrayElementIndex = new int[inArray.Rank];
             int[] arrayOfLength = new int[rank];
             GetLenthArray(arrayOfLength, inArray);
@@ -155,17 +154,20 @@ namespace AgHW
             for (int i = 0; i < rank; i++)
                 arrayOfLength[i] = GetLengthFromInput(i + 1);
             typeOfFill = GetTypeToFill();
-            if (typeOfFill == 1)
+            if (typeOfFill == "int")
             {
                 array = Array.CreateInstance(typeof(int), arrayOfLength);
                 minValueInt = GetMinIntFromInput();
                 maxValueInt = GetMaxIntFromInput(minValueInt);
                 return array;
             }
-            array = Array.CreateInstance(typeof(double), arrayOfLength);
-            minValueDouble = GetMinDoubleFromInput();
-            maxValueDouble = GetMaxDoubleFromInput(minValueDouble);
-            return array;
+            else //if (typeOfFill == "double")
+            {
+                array = Array.CreateInstance(typeof(double), arrayOfLength);
+                minValueDouble = GetMinDoubleFromInput();
+                maxValueDouble = GetMaxDoubleFromInput(minValueDouble);
+                return array;
+            }
         }
         private static int GetRankFromInput()
         {
@@ -191,7 +193,7 @@ namespace AgHW
                         return length;
             }
         }
-        private static int GetTypeToFill()
+        private static string GetTypeToFill()
         {
             ConsoleKey key;
             while (true)
@@ -201,12 +203,12 @@ namespace AgHW
                 if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
                 {
                     Console.WriteLine();
-                    return 1;
+                    return "int";
                 }
                 if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
                 {
                     Console.WriteLine();
-                    return 2;
+                    return "double";
                 }
             }
         }

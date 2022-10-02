@@ -16,7 +16,6 @@ namespace AgHW
                     {
                         return value;
                     }
-
             }
         }
         internal static byte GetByte(string prompt = "", byte minValue = byte.MinValue, byte maxValue = byte.MaxValue)
@@ -32,7 +31,6 @@ namespace AgHW
                     {
                         return value;
                     }
-
             }
         }
         internal static short GetInt16(string prompt = "", short minValue = short.MinValue, short maxValue = short.MaxValue)
@@ -48,7 +46,6 @@ namespace AgHW
                     {
                         return value;
                     }
-
             }
         }
 
@@ -67,7 +64,6 @@ namespace AgHW
         internal static int GetTimeHHMM()
         {
             string inputStr = string.Empty;
-            char inputChar = ' ';
             int time = 0;
             int digit = 0;
             Console.WriteLine("Введите время в формате hh:mm");

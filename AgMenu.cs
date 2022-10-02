@@ -6,9 +6,9 @@ namespace AgHW
     {
         private ConsoleColor AgMenuBackgroundColor;
         private ConsoleColor AgMenuForegroundColor;
-        string[] menuItems;
-        int leftPosition = 0;
-        int counter;
+        private readonly string[] menuItems;
+        private int leftPosition = 0;
+        private int counter;
         internal AgMenu(string[] menuItems, int leftPosition = 0)
         {
             this.menuItems = menuItems;
