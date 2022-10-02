@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AgHW4_1
+namespace AgHW
 {
     internal class Program
     {

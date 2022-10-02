@@ -1,5 +1,5 @@
 ﻿using System;
-namespace AgHW4_1
+namespace AgHW
 {
     internal static class AgGetInput
     {
