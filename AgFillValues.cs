@@ -11,19 +11,7 @@ namespace AgHW
         private static int maxValueInt;
         private static double minValueDouble;
         private static double maxValueDouble;
-        internal static List<int> CreatListRandomFillSixDigitNumber(byte listMaxLength = 0)
-        {
-            if (listMaxLength <= 0)
-            {
-                listMaxLength = AgGetInput.GetByte("максимальную длину списка", 1);
-            }
-            List<int> list = new List<int>();
-            for (int i = 0; i < listMaxLength; i++)
-            {
-                list.Add(rnd.Next(100000, 1000000));
-            }
-            return list;
-        }
+        
         //Для ряда целых чисел;
         internal static void ArrayRandomFill(Array inArray, int minValue, int maxValue)
         {
