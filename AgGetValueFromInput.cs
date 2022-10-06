@@ -84,12 +84,14 @@ namespace AgHW
             time += digit;
             return time;
         }
-        internal static int GetDigit(int minDigit = 0, int maxDigit = 9)
+        internal static int GetDigit(int minDigit = 0, int maxDigit = 9, bool isNeedPrompt = false)
         {
             char inChar = '0';
             int digit = 0;
             while (true)
             {
+                if (isNeedPrompt)
+                    Console.WriteLine($"Введите цифру от {minDigit} до {maxDigit}:");
                 inChar = Console.ReadKey(true).KeyChar;
                 if (Char.IsDigit(inChar))
                     digit = Convert.ToInt32(inChar) - 48;

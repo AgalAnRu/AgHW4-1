@@ -48,6 +48,7 @@
     <Compile Include="AgMenu.cs" />
     <Compile Include="HomeWork3.cs" />
     <Compile Include="HomeWork4.cs" />
+    <Compile Include="HomeWork5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

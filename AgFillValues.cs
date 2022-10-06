@@ -1,14 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace AgHW
 {
     internal class AgFillValues
     {
-        private readonly static Random random = new Random();
+        private readonly static Random rnd = new Random();
         private static string typeOfFill;
         private static int minValueInt;
         private static int maxValueInt;
         private static double minValueDouble;
         private static double maxValueDouble;
+        internal static List<int> CreatListRandomFillSixDigitNumber(byte listMaxLength = 0)
+        {
+            if (listMaxLength <= 0)
+            {
+                listMaxLength = AgGetInput.GetByte("максимальную длину списка", 1);
+            }
+            List<int> list = new List<int>();
+            for (int i = 0; i < listMaxLength; i++)
+            {
+                list.Add(rnd.Next(100000, 1000000));
+            }
+            return list;
+        }
         //Для ряда целых чисел;
         internal static void ArrayRandomFill(Array inArray, int minValue, int maxValue)
         {
@@ -127,12 +142,12 @@ namespace AgHW
         }
         private static int FillValueInt()
         {
-            int value = random.Next(minValueInt, maxValueInt + 1);
+            int value = rnd.Next(minValueInt, maxValueInt + 1);
             return value;
         }
         private static double FillValueDouble()
         {
-            double perCent = random.NextDouble();
+            double perCent = rnd.NextDouble();
             double value = minValueDouble + (maxValueDouble - minValueDouble) * perCent;
             return value;
         }
